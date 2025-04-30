@@ -1,41 +1,80 @@
-# Customer_Churn_Prediction_S8
+# 📉 Customer Churn Prediction (Beta Bank)
 
-# **Customer Churn Prediction for Beta Bank**
+**Sprint 8 – Classification | Model Evaluation | Class Imbalance | Machine Learning**
 
-## **Project Overview**  
-Beta Bank is experiencing customer churn, with clients gradually leaving each month. Retaining existing customers is more cost-effective than acquiring new ones, making it essential to predict potential churn early.  
+Predicting customer churn is essential for Beta Bank, which faces gradual client loss month over month. This project builds a machine learning model to identify customers likely to leave the bank, helping the business take proactive steps for retention.
 
-This project focuses on developing a machine learning model to predict whether a customer will leave the bank soon, using historical customer data. The objective is to maximize the **F1 score**, with a minimum threshold of **0.59** on the test set. The **AUC-ROC** metric is also analyzed for additional evaluation.  
+---
 
-## **Objectives**  
-- **Data Preparation:** Load, clean, and preprocess customer data.  
-- **Exploratory Data Analysis (EDA):** Understand data distributions, feature importance, and class balance.  
-- **Baseline Modeling:** Train an initial model without addressing class imbalance and analyze results.  
-- **Model Optimization:** Implement at least two techniques to handle class imbalance and fine-tune hyperparameters.  
-- **Evaluation & Testing:** Compare models based on F1 score and AUC-ROC, selecting the best-performing one.  
+## 🔍 Project Overview
 
-## **Dataset Description**  
-The dataset is stored in **`/datasets/Churn.csv`** and contains the following features:  
+Retaining customers is significantly more cost-effective than acquiring new ones. Beta Bank aims to reduce churn by identifying which customers are at risk of leaving. This project focuses on:
 
-### **Features**  
-- **Demographics:** `Geography`, `Gender`, `Age`, `Surname`  
-- **Financial Information:** `CreditScore`, `Balance`, `EstimatedSalary`, `NumOfProducts`, `HasCrCard`  
-- **Customer Behavior:** `Tenure`, `IsActiveMember`  
+- Developing a classification model with an **F1 score ≥ 0.59** on test data.
+- Evaluating model robustness using **AUC-ROC** as a secondary metric.
+- Addressing **class imbalance** to improve prediction reliability.
 
-### **Target Variable**  
-- `Exited`: **1** if the customer left the bank, **0** if they stayed.  
+---
 
-## **Methodology**  
-1. **Data Preprocessing:** Handle missing values, encode categorical variables, and scale numerical features.  
-2. **Exploratory Data Analysis:** Examine feature distributions, correlations, and class imbalance.  
-3. **Baseline Model:** Train an initial classifier without addressing class imbalance.  
-4. **Class Imbalance Handling:** Apply **oversampling, undersampling, or class weighting** to improve predictions.  
-5. **Model Training & Selection:** Train multiple models, validate their performance, and tune hyperparameters.  
-6. **Final Evaluation:** Assess the best model on unseen data, ensuring an **F1 score ≥ 0.59**, while analyzing AUC-ROC.  
+## 🎯 Objectives
 
-## **Performance Metrics**  
-- **F1 Score:** Primary metric to balance precision and recall.  
-- **AUC-ROC:** Measures model performance across different classification thresholds.  
+- **Data Preparation**: Load, clean, and preprocess customer data.
+- **Exploratory Data Analysis (EDA)**: Understand data distributions, class balance, and correlations.
+- **Baseline Modeling**: Train initial models and evaluate without class balancing.
+- **Model Optimization**: Handle class imbalance using upsampling and class weighting.
+- **Evaluation & Testing**: Compare models and validate the best one on unseen data.
 
-## **Conclusion**  
-This project provides a data-driven approach to customer retention, helping Beta Bank proactively identify and retain customers at risk of leaving.  
+---
+
+## 📁 Dataset Description
+
+**File:** `/datasets/Churn.csv`
+
+**Target Variable:**  
+- `Exited`: 1 if the customer left the bank, 0 if they stayed.
+
+**Features:**
+- **Demographics**: `Geography`, `Gender`, `Age`, `Surname`
+- **Financial Info**: `CreditScore`, `Balance`, `EstimatedSalary`, `NumOfProducts`, `HasCrCard`
+- **Customer Behavior**: `Tenure`, `IsActiveMember`
+
+---
+
+## ⚙️ Methodology
+
+- **Preprocessing**: Handled missing values, encoded categoricals, scaled numericals.
+- **EDA**: Visualized feature distributions, explored churn rates, checked imbalance.
+- **Model Selection**: Tested `DecisionTreeClassifier`, `RandomForestClassifier`, and `LogisticRegression`.
+- **Class Imbalance Handling**: Applied **upsampling** and **class weighting**.
+- **Hyperparameter Tuning**: Used `GridSearchCV` for optimization.
+- **Final Evaluation**: Best model tested on a holdout dataset.
+
+---
+
+## 📊 Results Summary
+
+- **Best Model:** `RandomForestClassifier` with **upsampled training data**
+- **Test F1 Score:** `0.591`
+- **AUC-ROC:** `0.838`
+- ✅ The model **meets the required F1 threshold (≥ 0.59)**.
+- 🔍 AUC-ROC confirms strong ability to distinguish between classes.
+
+---
+
+## 💡 Conclusion
+
+- Three models were tested: Decision Tree, Random Forest, and Logistic Regression.
+- **Random Forest** performed best and was optimized further.
+- Among balancing strategies, **upsampling** yielded better results than class weighting.
+- The final model provides **actionable insights** and can help Beta Bank **identify customers likely to churn**, with a good balance between precision and recall.
+
+---
+
+## 🛠️ Tools & Libraries
+
+- Python 3.x
+- pandas
+- numpy
+- scikit-learn
+- seaborn & matplotlib (for EDA)
+- Jupyter Notebook
